@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       
+            function fun1(){
+                var str = document.getElementById("display").value;
+            
+                 var s=str.split(". ");
+                 var n=[];
+                 for(var i of s)
+              {
+               n.push(i.charAt(0).toUpperCase() +i.substring(1));
+               }
+             document.getElementById("display1").innerHTML ="1." + n.join(". ");
+
+            }
+            function fun2(){
+                var str = document.getElementById("display").value;
+            
+                 var w=str.split(" ");
+                 var n=[];
+                 for(var i of w)
+              { 
+               n.push(i.charAt(0).toUpperCase() + i.substring(1));
+               }
+             document.getElementById("display2").innerHTML ="2." +n.join(" ");
+
+            }
+            function fun3(){
+                var str = document.getElementById("display").value;
+            
+                 var w=str.split(" ");
+                 var n=[];
+                 for(var i of w)
+              { if(i.match(/[ai]/gi))
+               n.push(i);
+               }
+             document.getElementById("display3").innerHTML ="3." +n.join(" ");
+
+            }
+        function fun4(){
+            var str = document.getElementById("display").value;
+            var w= str.split(' ');
+            var result = []; 
+            for(var i = 0; i < w.length; i ++){
+            result.push(w[i].split('').reverse().join(''));  }
+            document.getElementById("display4").innerHTML = "4. " + result.join(" ");
+        }
+    //  var str = document.getElementById("display").value;
+            
+    //         var words=str.split(" ");
+    //         var n=[];
+    //         for(let word of words)
+    //      {
+          
+    //       n.push(word.reverse());
+    //       }
+        
+  
+        function fun5(){
+           
+            var str = document.getElementById("display").value;
+            var w=str.split(". ");
+                 var n=[];
+                 for(var i =0;i<w.length;i++)
+              { 
+               n.push(w[i].replace(/ /g,'-'));
+               }
+             document.getElementById("display5").innerHTML ="5" + n.join(". ");
+            }
+
+           
+           
+        //    for(var i=0;i<str.length;i++)
+        //    {
+        //        var a=str.charAt(i);
+        //        if(a===" ")
+        //       {
+        //        document.getElementById("display5").innerHTML = str.replace(a,"-");
+               
+        //         }
+        //    }
+
+          
+
+            window.onload = function(){
+                document.getElementById("btn").addEventListener("click", function(){
+                    fun1();
+                    fun2();
+                    fun3();
+                    fun4();
+                    fun5();
+                   
+                   
+
+                },false);
+            };
+     </script>
+
+
+
+</head>
+<body>
+    <form name="stringproject"></form>
+    <table>
+        <tr>
+            <td id="enterstring">
+                enter string
+            </td>
+           
+          </tr> 
+    </table>
+    <textarea name="inputarea" id="display" style="width:500px; height:200px;"></textarea>
+</form>
+<button id="btn">submit</button>
+<p id="display1"></p>
+<p id="display2"></p>
+<p id="display3"></p>
+<p id="display4"></p>
+<p id="display5"></p>
+</body>
+</html>
