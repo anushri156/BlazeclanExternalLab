@@ -1,0 +1,7 @@
+1.Select PatientName, DoctorName, Patients.PatientRowId, Doctors.DoctorRowId from
+Doctors, Patients, DoctorPatientIPD
+where Doctots.DoctorRowId = DoctorPatientIPD.DoctorRowId
+and Patients.PatientRowId = DoctorPatientIPD.PatientRowId
+
+
+2.SELECT doctorpatientipd.PatientRowId,patients.PatientName from doctorpatientipd, patients where doctorpatientipd.DoctorRowId in (select doctors.DoctorRowId from doctors where Specialization = 'Heart') and doctorpatientipd.PatientRowId = patients.PatientRowId
