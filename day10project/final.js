@@ -89,7 +89,7 @@ instance.get('/api/employee/:id', (req, resp) => {
             force: false 
         })
         .then(() =>
-            dept.findOne({ where: { EmpNo: id } })
+            emp.findOne({ where: { EmpNo: id } })
         )
         .then((data) => {
             resp.json({ statusCode: 200, data: data })
@@ -106,12 +106,12 @@ instance.post('/api/employee', (req, resp) => {
         Salary: parseInt(req.body.Salary),
         DeptNo: parseInt(req.body.DeptNo)
     };
-    console.log(JSON.stringify(dept));
+    console.log(JSON.stringify(emp1));
     sequelize.sync({
             force: false 
         })
         .then(() => {
-            return dept.create(emp1);
+            return emp.create(emp1);
         })
         .then((data) => {
             resp.json({ statusCode: 200, data: data.toJSON() })
@@ -134,14 +134,11 @@ instance.put('/api/employee/:id', (req, resp) => {
                 DeptNo: parseInt(req.body.DeptNo)
             }, { where: { EmpNo: id } })
         )
-        .then((response) => {
-            if (response.length === 0) {
-                resp.json({ data: 'The record is not updated ' });
-            } else {
-                resp.json({ data: response });
-            }
-        })
-        .catch((error) => resp.send({ statusCode: 500, data: `Error in Update ${error}` }));
+        .then((data) => {
+            resp.json({ statusCode: 200, data: data });
+            resp.end();
+            
+        }).catch((error) => resp.send({ statusCode: 500, data: `Error in Update ${error}` }));
 });
 
 
@@ -151,14 +148,12 @@ instance.delete('/api/employee/:id', (req, resp) => {
             force: false 
         })
         .then(() =>
-            dept.destroy({ where: { EmptNo: id } })
+            emp.destroy({ where: { EmpNo: id } })
         )
-        .then((response) => {
-            if (response.length === 0) {
-                resp.json({ data: 'The record not found since cannot not be deleted ' });
-            } else {
-                resp.json({ data: response });
-            }
+        .then((data) => {
+            resp.json({ statusCode: 200, data: data })
+            resp.end();
+           
         })
         .catch((error) => resp.send({ statusCode: 500, data: `Error in Delete ${error}` }));
        
